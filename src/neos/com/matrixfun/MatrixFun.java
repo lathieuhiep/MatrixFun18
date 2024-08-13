@@ -88,26 +88,49 @@ public class MatrixFun {
 
     // tìm và in ra cột nào có tổng lớn nhất (loại trừ các phần tử trên đường chéo)
     public void findBestColumn() {
+        int numRows = matrix.length;
+        int numCols = matrix[0].length;
+        int[] columnSums = new int[numCols];
+
         System.out.println("Tổng giá trị từng cột (loại trừ các phần tử trên đường chéo)");
 
-        for (int j = 0; j < matrix[0].length; j++) {
+        for (int j = 0; j < numCols; j++) {
             int sum = 0;
+            int stt = 1;
 
-            for (int i = 0; i < matrix.length; i++) {
+            System.out.print("Cột thứ " + (j+1) + ": ");
+
+            for (int i = 0; i < numRows; i++) {
                 if (i != j) {
-                    System.out.print( matrix[i][j]);
-
-                    if (i < matrix.length - 1) {
+                    if ( stt > 1 ) {
                         System.out.print(" + ");
-                    } else {
-                        System.out.print(" = ");
                     }
 
+                    System.out.print( matrix[i][j]);
+
                     sum += matrix[i][j];
+                    stt++;
                 }
             }
-
-            System.out.println("Cột thứ " + (j+1) + ": " + sum);
+            
+            columnSums[j] = sum;
+            System.out.println(" = " + sum);
         }
+
+        findMax(columnSums);
+    }
+
+    public void findMax(int[] arrInt) {
+        int max = arrInt[0];
+        int index = 0;
+
+        for (int i = 0; i < arrInt.length; i++) {
+            if ( arrInt[i] > max ) {
+                max = arrInt[i];
+                index = i;
+            }
+        }
+
+        System.out.println("=> Cột " + (index + 1) + " có tổng lớn nhất là " + max);
     }
 }

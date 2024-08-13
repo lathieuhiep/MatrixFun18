@@ -7,8 +7,14 @@ public class Main {
         MatrixFun matrixFun = new MatrixFun(8);
 
         matrixFun.init();
+        System.out.println();
+
         matrixFun.printMatrix();
+        System.out.println();
+
         matrixFun.convertRowToInt();
+        System.out.println();
+
         matrixFun.findBestColumn();
     }
 }
